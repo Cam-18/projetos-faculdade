@@ -1,3 +1,5 @@
+# Aplica o PCA (Análise de Componentes Principais) técnica de redução de dimensionalidade e extração de características
+
 import pandas as pd
 from sklearn.datasets import load_wine
 from sklearn.feature_selection import SelectKBest
@@ -23,13 +25,14 @@ pca.fit(X)
 X = pca.transform(X)
 var = pca.explained_variance_ratio_ # Variabilidade de cada componente.
 
+# Plota gráfico do PCA
 plt.scatter(X[:, 0], X[:, 1], c = y, alpha = .8, lw = 2)
 plt.title('PCA da base de dados WINE')
 plt.xlabel(f'Componente 1 expressa {var[0]*100:.2f}% de variabilidade')
 plt.ylabel(f'Componente 2 expressa {var[1]*100:.2f}% de variabilidade')
 plt.show()
 
-# 4: Plot a matriz de correlação das características utilizando o seaborn.
+# 4: Plote a matriz de correlação das características utilizando o seaborn.
 X_new = pd.DataFrame(X_new)
 corr = X_new.corr()
 
