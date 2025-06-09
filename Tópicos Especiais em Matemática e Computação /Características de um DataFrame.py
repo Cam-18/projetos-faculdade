@@ -1,3 +1,5 @@
+# Características de um DataFrame
+
 import pandas as pd
 
 # 1:
