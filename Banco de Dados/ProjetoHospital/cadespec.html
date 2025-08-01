@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Especialidades</title>
+    <link rel="stylesheet" href="/static/estilo.css"> <!-- Faz o link com o arquivo que define os estilos da página -->
+</head>
+<body>
+    <div class="container"> <!-- Cria uma divisão que agrupará os elementos da página para aplicação dos estilos CSS -->
+        <h1>Cadastro de Especialidades</h1> <!-- Título que aparece na página -->
+        <form action="/cadespec" method="POST"> <!-- Início do formulário que enviará dados para cadastro usando método POST -->
+
+            <div class="form-row"> <!-- Divisão para organizar os campos do formulário em uma linha -->
+                <input type="text" name="nome" placeholder="Nome da Especialidade" required> <!-- Campo para inserir o nome da especialidade -->
+            </div>
+
+            <div class="button-container"> <!-- Divisão para os botões de ação -->
+                <button type="submit">Cadastrar</button> <!-- Botão para enviar as informações ao bd -->
+                <a href="/" class="menu-button">Voltar ao Menu</a> <!-- Botão para retornar ao menu -->
+            </div>
+
+            <!-- Mostra uma mensagem de sucesso caso as informações tenham sido enviadas ao bd corretamente -->
+            {% if mensagem_sucesso %}
+                <div class="mensagem-sucesso">
+                    {{ mensagem_sucesso }}
+                </div>
+            {% endif %}
+
+        </form>
+    </div>
+</body>
+</html>
