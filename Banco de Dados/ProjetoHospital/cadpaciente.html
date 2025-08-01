@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Cadastro de Pacientes</title>
+    <link rel="stylesheet" href="/static/estilo.css"> <!-- Faz o link com o arquivo que define os estilos da página -->
+</head>
+
+<body>
+    <div class="container"> <!-- Cria uma divisão que agrupará os elementos da página para aplicação dos estilos CSS -->
+        <h1>Cadastro de Pacientes</h1> <!-- Título que aparece na página -->
+        <form action="/cadpaciente" method="POST"> <!-- Início do formulário que enviará dados para cadastro usando método POST -->
+
+            <div class="form-row"> <!-- Divisão para organizar os campos do formulário em uma linha -->
+                <!-- Campos para a inserção das informações pedidas -->
+                <label>
+                    <input type="text" name="nome" placeholder="Nome do paciente" required>
+                </label>
+
+                <label>
+                    <input type="text" name="cpf" placeholder="CPF" required>
+                </label>
+
+                <label>
+                    <input type="date" name="dataNasc" required>
+                </label>
+            </div>
+
+            <div class="form-row"> <!-- Divisão para organizar os campos do formulário em uma linha -->
+                <!-- Utiliza das informções coletadas pelo backend e mostra as opções de planos de saúde disponíveis -->
+                <select name="codPlano" required>
+                    <option value="">Selecione o plano</option>
+                    {% for cod, nome in planos_saude %}
+                    <option value="{{ cod }}">{{ nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="button-container">
+                <button type="submit">Cadastrar</button> <!-- Botão que cadastra o paciente, manda as informações para o banco de dados -->
+                <a href="/" class="menu-button">Voltar ao Menu</a> <!-- Botão para retornar ao menu -->
+            </div>
+
+            <!-- Mostra mensagem de sucesso caso o paciente seja corretamente inserido -->
+            {% if mensagem_sucesso %}
+                <div class="mensagem-sucesso">
+                    {{ mensagem_sucesso }}
+                </div>
+            {% endif %}
+        </form>
+    </div>
+</body>
+</html>
