@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Pacientes Cadastrados</title>
+    <link rel="stylesheet" href="/static/estilo.css"> <!-- Faz o link com o arquivo que define os estilos da página -->
+</head>
+
+<body>
+    <div class="container">
+        <h1>Pacientes Cadastrados</h1>
+
+        <!-- Mensagens de Erro -->
+        {% if mensagem_erro %}
+        <div class="error-message">
+            {{ mensagem_erro }}
+        </div>
+        {% endif %}
+
+        <!-- Lista de Pacientes -->
+        {% if pacientes %}
+        <div class="card">
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <!-- Nomes das colunas da tabela -->
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Data de Nascimento</th>
+                        <th>Plano de Saúde</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for paciente in pacientes %}
+                    <tr>
+                        <td>{{ paciente[0] }}</td>  <!-- nome -->
+                        <td>{{ paciente[1] }}</td>  <!-- cpf -->
+                        <td>{{ paciente[2] }}</td>  <!-- dataNasc -->
+                        <td>{{ paciente[3] }}</td>  <!-- nome_plano -->
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- Se não houver nenhum paciente cadastrado mostra essa mensagem -->
+        {% else %}
+        <p class="no-results">Nenhum paciente cadastrado encontrado.</p>
+        {% endif %}
+
+        <div class="back-button-container">
+            <a href="/" class="menu-button">Voltar ao Menu</a>
+        </div>
+    </div>
+</body>
+</html>
